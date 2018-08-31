@@ -70,7 +70,7 @@ def data_generator(batchsize):
                 X_batch = sess.run(val_batch)
                 yield X_batch
 
-with tf.device('/CPU:0'):
+with tf.device('/GPU:0'):
     IMGS = glob.glob('data/*')
     base_model = NASNetMobile((224, 224, 3), include_top=False, pooling='avg', weights=None)
     x = Dropout(0.75)(base_model.output)
